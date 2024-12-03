@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card shadow" style="width: 400px;">
+        <div class="card-body">
+            <h5 class="card-title text-center">Inicio sesión AMAT</h5>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_username" class="form-label">Nombre de usuario</label>
+                    <input type="text" name="username" id="id_username" class="form-control" value="">
+                </div>
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">Contraseña</label>
+                    <input type="password" name="password" id="id_password" class="form-control" value="">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+
+            <!-- Mostrar mensaje de error si existe -->
+            {% if error_message %}
+                <div class="alert alert-danger mt-3">
+                    <strong>Error:</strong> {{ error_message }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

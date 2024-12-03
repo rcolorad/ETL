@@ -1,0 +1,8 @@
+db:
+  host: "localhost"
+  user: "etl"
+  password: "Qwerty1234+"
+  database: "etl"
+
+basename_project:
+  path: "/home/rcolorad/Desktop/ETL/etl_app/etl"

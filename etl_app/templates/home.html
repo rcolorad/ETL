@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}ETL AMAT{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <form id="tipo_dato_form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="select-container">
+            <div class="tipo_dato_container mb-3">
+                <label for="tipo_dato" class="form-label">Seleccione un tipo de dato: </label>
+                <select id="tipo_dato" name="tipo_dato" class="form-select">
+                    <option value="" selected>Seleccione un tipo de dato</option>
+                    {% for dato in datos %}
+                        <option value="{{ dato.id }}">{{ dato.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="ficheros_pendientes_container mb-3">
+                <label for="id_fichero" class="form-label">Lista de ficheros pendientes:</label>
+                <select id="ficheros" name="ficheros" class="form-select">
+                    <option value="">Seleccione un fichero</option>
+                </select>    
+            </div> 
+        </div>
+
+        <!-- Botón para enviar los ficheros seleccionados -->
+        <div class="boton_procesar">
+            <button type="submit" id="enviar_btn" class="btn btn-primary">Procesar</button>
+        </div>  
+    </form>
+</div>
+
+<!-- Popup de carga -->
+<div id="popupCarga" style="display: none;">
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Cargando...</span>
+    </div>
+    Procesando el fichero, por favor espere...
+</div>
+<script type="text/javascript">
+    var procesarFicheroUrl = "{% url 'procesar_fichero' %}";
+</script>
+
+{% endblock %}

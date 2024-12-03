@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ETL AMAT{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+<!-- Encabezado -->
+<header class="bg-primary text-white">
+    <div class="container d-flex justify-content-between align-items-center py-3">
+        <!-- Imagen a la izquierda -->
+        <img src="{% static 'img/Logo_amat_negativo.png' %}" alt="Logo" style="height: 50px;">
+
+        <!-- Opciones a la derecha -->
+        <nav>
+            <!-- Si el usuario está autenticado -->
+            {% if request.session.is_authenticated %}
+                {% if request.session.username == "admin" %}
+                    <a href="{% url 'admin_page' %}" class="text-white mx-2">Panel de Administrador</a>
+                {% endif %}
+                <a href="{% url 'home' %}" class="text-white mx-2">Procesar ficheros</a>
+                <a href="{% url 'logout' %}" class="text-white mx-2">Cerrar Sesión</a>
+            {% else %}
+                <!-- Si el usuario no está autenticado -->
+                <a href="{% url 'login' %}" class="text-white mx-2">Iniciar sesión</a>
+            {% endif %}
+        </nav>
+    </div>
+</header>
+    
+    {% block content %}{% endblock %}
+
+    <footer>
+        <!-- Aquí puedes agregar un pie de página común -->
+    </footer>
+
+    <!-- Enlace a los scripts de Bootstrap -->
+    <!-- Cargar Popper.js antes de Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+    <!-- Cargar Bootstrap JS después de Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'js/cargar_pendientes.js' %}"></script>
+    <script src="{% static 'js/utils.js' %}"></script>
+    {% if messages %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            {% for message in messages %}
+                // Solo genera el alert si hay contenido
+                if ("{{ message }}" !== "") {
+                    alert("{{ message|escapejs }}");
+                }
+            {% endfor %}
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

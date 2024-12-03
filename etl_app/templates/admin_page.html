@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Administración{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="card shadow" style="width: 400px;">
+        <div class="card-body">
+            </br>
+            <h5 class="card-title text-center">Añadir tipo de dato a la aplicación</h5>
+            </br>
+            <form method="post">
+                {% csrf_token %}
+                
+                <!-- Campo Nombre -->
+                <div class="mb-3">
+                    <label for="id_nombre" class="form-label">Nombre del tipo de dato:</label>
+                    <input type="text" name="nombre" id="id_nombre" class="form-control" value="">
+                    {% if form.nombre.errors %}
+                        <div class="alert alert-danger mt-2">
+                            <strong>Error:</strong> {{ "Rellena el nombre del tipo de dato" }}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Campo Siglas -->
+                <div class="mb-3">
+                    <label for="id_siglas" class="form-label">Siglas del tipo de dato:</label>
+                    <input type="text" name="siglas" id="id_siglas" class="form-control" value="">
+                    {% if form.siglas.errors %}
+                        <div class="alert alert-danger mt-2">
+                            <strong>Error:</strong> {{ "Rellena las siglas del tipo de dato" }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Botón de Enviar -->
+                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
