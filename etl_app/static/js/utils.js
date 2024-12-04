@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 body: formData,
                 headers: {
-                    'X-CSRFToken': '{{ csrf_token }}', // Asegúrate de incluir el CSRF token
+                    'X-CSRFToken': '{{ csrf_token }}',
                 }
             })
             .then(response => response.json())
