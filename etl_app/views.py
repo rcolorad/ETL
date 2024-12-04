@@ -53,7 +53,7 @@ def logout(request):
     request.session['is_authenticated'] = False
     messages.success(request, 'Has cerrado sesión correctamente.')
     
-    # Redirigir a la página de login o donde lo desees
+    # Redirigir a la página de login
     return redirect('login')
 
 # Vista para el home

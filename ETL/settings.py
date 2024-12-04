@@ -21,10 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5jx45ozq%w8m6_^7joa_r+(2a%yn1k-u7atqz*#n=_ec&)_z=2'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -82,12 +80,10 @@ DATABASES = {
         'NAME': 'etl',  # Nombre de la base de datos
         'USER': 'etl',                 # Usuario de la base de datos
         'PASSWORD': 'Qwerty1234+',          # Contraseña del usuario
-        'HOST': 'localhost',                  # Host (normalmente localhost o IP del servidor)
+        'HOST': 'localhost',                  # Host
         'PORT': '3306',                       # Puerto (por defecto para MySQL es 3306)
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

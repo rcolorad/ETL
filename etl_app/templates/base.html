@@ -13,10 +13,9 @@
 <!-- Encabezado -->
 <header class="bg-primary text-white">
     <div class="container d-flex justify-content-between align-items-center py-3">
-        <!-- Imagen a la izquierda -->
+        
         <img src="{% static 'img/Logo_amat_negativo.png' %}" alt="Logo" style="height: 50px;">
 
-        <!-- Opciones a la derecha -->
         <nav>
             <!-- Si el usuario está autenticado -->
             {% if request.session.is_authenticated %}
@@ -36,14 +35,13 @@
     {% block content %}{% endblock %}
 
     <footer>
-        <!-- Aquí puedes agregar un pie de página común -->
+        
     </footer>
 
     <!-- Enlace a los scripts de Bootstrap -->
-    <!-- Cargar Popper.js antes de Bootstrap JS -->
+    
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
-    <!-- Cargar Bootstrap JS después de Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

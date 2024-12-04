@@ -2,7 +2,6 @@ from django.http import JsonResponse
 import pandas as pd
 from sqlalchemy import create_engine, text
 import yaml
-from django.db import connection
 
 ruta_archivo_config = 'etl_app/etl/configs/config.yaml'
 
